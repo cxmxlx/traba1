@@ -1,0 +1,170 @@
+/* Diario de Estudio — diseño limpio y moderno */
+:root {
+  --fondo: #f6f7fb;
+  --tarjeta: #ffffff;
+  --texto: #1e293b;
+  --texto-suave: #64748b;
+  --primario: #4f46e5;
+  --primario-oscuro: #4338ca;
+  --borde: #e2e8f0;
+  --fuego: #f97316;
+  --radio: 16px;
+  --sombra: 0 10px 30px rgba(30, 41, 59, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+.contenedor {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+}
+
+.encabezado {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  padding: 2rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.encabezado-contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+h1 { margin: 0; font-size: 1.9rem; }
+.subtitulo { margin: 0.4rem 0 0; opacity: 0.9; }
+
+.racha-tarjeta {
+  background: white;
+  color: var(--texto);
+  border-radius: var(--radio);
+  padding: 1rem 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 260px;
+  box-shadow: var(--sombra);
+}
+
+.fuego { font-size: 2.6rem; }
+.numero-racha { font-size: 2rem; font-weight: 800; color: var(--fuego); }
+.numero-mejor { font-size: 1.4rem; font-weight: 800; }
+.mejor-bloque { display: flex; align-items: baseline; gap: 0.3rem; }
+.etiqueta-racha { color: var(--texto-suave); font-size: 0.95rem; margin-left: 0.3rem; }
+.mensaje-racha { margin: 0; font-size: 0.85rem; color: var(--texto-suave); flex-basis: 100%; }
+
+.rejilla {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.tarjeta {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.4rem;
+  box-shadow: var(--sombra);
+}
+
+h2 { margin-top: 0; font-size: 1.2rem; }
+
+form label { display: block; font-weight: 600; margin: 0.8rem 0 0.35rem; }
+input {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.fila { display: flex; gap: 0.8rem; }
+.grupo { flex: 1; }
+
+.boton {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.8rem;
+  border: 0;
+  border-radius: 10px;
+  background: var(--primario);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.boton:hover { background: var(--primario-oscuro); }
+
+.boton-secundario {
+  border: 1px solid var(--borde);
+  background: transparent;
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  color: var(--texto-suave);
+}
+.boton-secundario:hover { color: #dc2626; border-color: #dc2626; }
+
+.error { color: #dc2626; font-size: 0.9rem; }
+
+.estadisticas {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--borde);
+  text-align: center;
+}
+.estadisticas > div { flex: 1; min-width: 4.5rem; }
+.estadisticas strong { display: block; font-size: 1.2rem; }
+.estadisticas span { font-size: 0.85rem; color: var(--texto-suave); }
+
+.cabecera-lista {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cabecera-lista h2 { margin: 0; }
+
+.lista { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.7rem; }
+.lista li {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: center;
+}
+.lista .tema { font-weight: 700; margin: 0; }
+.lista .detalle { margin: 0.2rem 0 0; color: var(--texto-suave); font-size: 0.9rem; }
+.boton-eliminar {
+  border: 0;
+  background: #fef2f2;
+  color: #dc2626;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+}
+
+.texto-vacio { color: var(--texto-suave); text-align: center; }
+
+.pie { text-align: center; color: var(--texto-suave); font-size: 0.9rem; padding: 1.5rem; }
+
+@media (max-width: 860px) {
+  .rejilla { grid-template-columns: 1fr; }
+}

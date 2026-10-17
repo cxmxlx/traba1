@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diario de Estudio — Mi Racha</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor encabezado-contenido">
+      <div>
+        <h1>📚 Diario de Estudio</h1>
+        <p class="subtitulo">Registra tu progreso día a día y mantén viva tu racha.</p>
+      </div>
+      <div class="racha-tarjeta" aria-live="polite">
+        <span class="fuego" aria-hidden="true">🔥</span>
+        <div>
+          <span id="contador-racha" class="numero-racha">0</span>
+          <span class="etiqueta-racha">días de racha</span>
+        </div>
+        <div class="mejor-bloque">
+          <span aria-hidden="true">🏆</span>
+          <span id="mejor-racha" class="numero-mejor">0</span>
+          <span class="etiqueta-racha">mejor racha</span>
+        </div>
+        <p id="mensaje-racha" class="mensaje-racha">¡Registra tu primera sesión!</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenedor rejilla">
+    <section class="tarjeta">
+      <h2>Registrar sesión de estudio</h2>
+      <form id="formulario-sesion">
+        <label for="campo-tema">¿Qué has estudiado?</label>
+        <input
+          type="text"
+          id="campo-tema"
+          name="tema"
+          placeholder="Ej: Matemáticas - integrales"
+          maxlength="120"
+          required
+        />
+
+        <div class="fila">
+          <div class="grupo">
+            <label for="campo-horas">¿Cuántas horas?</label>
+            <input
+              type="number"
+              id="campo-horas"
+              name="horas"
+              min="0.25"
+              max="24"
+              step="0.25"
+              placeholder="Ej: 2"
+              required
+            />
+          </div>
+          <div class="grupo">
+            <label for="campo-fecha">Fecha</label>
+            <input type="date" id="campo-fecha" name="fecha" required />
+          </div>
+        </div>
+
+        <button type="submit" class="boton">Guardar sesión</button>
+        <p id="error-formulario" class="error" hidden></p>
+      </form>
+
+      <div class="estadisticas">
+        <div>
+          <strong id="total-sesiones">0</strong>
+          <span>sesiones</span>
+        </div>
+        <div>
+          <strong id="total-horas">0 h</strong>
+          <span>estudiadas</span>
+        </div>
+        <div>
+          <strong id="total-dias">0</strong>
+          <span>días activos</span>
+        </div>
+        <div>
+          <strong id="minutos-semana">0 min</strong>
+          <span>esta semana</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="tarjeta">
+      <div class="cabecera-lista">
+        <h2>Sesiones registradas</h2>
+        <button id="boton-borrar-todo" class="boton-secundario" type="button">Borrar todo</button>
+      </div>
+      <ul id="lista-sesiones" class="lista"></ul>
+      <p id="lista-vacia" class="texto-vacio">Aún no hay sesiones. ¡Empieza hoy y enciende el fuego! 🔥</p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>Un día cuenta para la racha si tiene al menos una sesión. Si un día queda vacío, la racha se reinicia.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
