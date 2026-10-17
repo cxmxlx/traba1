@@ -1,6 +1,7 @@
 # MEMORY.md — Diario de Estudio
 
 ## Estado
+- Git inicializado en rama `main` (2026-10-17). Commit inicial con los 6 archivos del proyecto.
 - Mejor racha implementada: se muestra junto a la racha actual (`#mejor-racha`).
 - Minutos de la semana implementados: 4.º bloque de estadísticas (`#minutos-semana`), lunes–domingo local, muestra `X h Y min`.
 - Archivos: `index.html`, `styles.css`, `app.js`. Sin build, funciona con doble clic.

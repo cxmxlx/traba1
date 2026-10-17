@@ -7,6 +7,7 @@ Web estática para registrar sesiones de estudio y motivarse viendo la racha de 
 ## Stack y estructura
 - HTML, CSS y JavaScript puros: sin frameworks, librerías, npm, bundler ni build.
 - `index.html` (estructura), `styles.css` (estilos), `app.js` (lógica y datos).
+- Repositorio git en rama `main`: commits breves en español.
 - Debe funcionar abriendo `index.html` con doble clic (`file://`): nada de módulos ES (`type="module"`), `fetch` a archivos locales ni nada que requiera servidor.
 
 ## Convenciones
