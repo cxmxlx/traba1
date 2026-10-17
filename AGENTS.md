@@ -1,5 +1,3 @@
-# AGENTS.md — traba1 (practica/mouredev)
-
 # AGENTS.md — Diario de Estudio
 
 Web estática para registrar sesiones de estudio y motivarse viendo la racha de días seguidos. Proyecto didáctico: el código debe poder entenderlo alguien que empieza a programar.
