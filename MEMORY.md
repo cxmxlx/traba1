@@ -8,6 +8,7 @@
 - Calendario mensual implementado: tarjeta a ancho completo, rejilla lunes–domingo, 🔥 + fondo naranja en días con sesión, hoy con recuadro azul, futuro atenuado.
 - Contador de días estudiados del mes visible: `#resumen-mes` bajo el título del calendario, se actualiza al navegar meses.
 - Rediseño visual (2026-10-18, skill `frontend-design`): identidad "tinta y brasa" — banda de tinta con número de racha gigante serif y resplandor de brasa, tarjetas con filete sin sombra, lista en filas con filete, foco visible y `prefers-reduced-motion`.
+- Skill `local-dates` versionada en `.agents/skills/` (ruta de compatibilidad que leen OpenCode y Cursor; viaja con el repo).
 - Archivos: `index.html`, `styles.css`, `app.js`. Sin build, funciona con doble clic.
 
 ## Decisiones
