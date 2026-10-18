@@ -6,6 +6,7 @@
 - Mejor racha implementada: se muestra junto a la racha actual (`#mejor-racha`).
 - Minutos de la semana implementados: 4.º bloque de estadísticas (`#minutos-semana`), lunes–domingo local, muestra `X h Y min`.
 - Calendario mensual implementado: tarjeta a ancho completo, rejilla lunes–domingo, 🔥 + fondo naranja en días con sesión, hoy con recuadro azul, futuro atenuado.
+- Contador de días estudiados del mes visible: `#resumen-mes` bajo el título del calendario, se actualiza al navegar meses.
 - Archivos: `index.html`, `styles.css`, `app.js`. Sin build, funciona con doble clic.
 
 ## Decisiones
@@ -15,6 +16,7 @@
 - Fechas solo en local: `parsearFechaLocal()` con `new Date(año, mes-1, día)`. `creadaEn` ahora es `Date.now()` (antes `toISOString()`).
 - Mejor racha ignora fechas futuras y cuenta días duplicados como uno.
 - Calendario: marca cualquier día con ≥1 sesión (no solo rachas consecutivas), excluye futuras, solo lectura, navegación limitada al mes actual y mes visible no se persiste (al recargar vuelve al mes actual).
+- Contador de días estudiados: cuenta el mes visible en el calendario (no siempre el actual), días únicos con sesión y no futuros; cálculo por prefijo de string `AAAA-MM` con `padStart(2)`, sin `new Date`. Texto sin "este mes" porque al navegar dejaría de ser "este".
 
 ## Errores a evitar
 - No usar `toISOString()` ni `new Date("AAAA-MM-DD")`: rompen el día por UTC.

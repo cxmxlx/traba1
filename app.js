@@ -21,6 +21,7 @@ const tituloMes = document.getElementById("titulo-mes");
 const calendario = document.getElementById("calendario");
 const botonMesAnterior = document.getElementById("mes-anterior");
 const botonMesSiguiente = document.getElementById("mes-siguiente");
+const resumenMes = document.getElementById("resumen-mes");
 
 // Mes que muestra el calendario: siempre arranca en el mes actual.
 let mesVisible = { anio: new Date().getFullYear(), mes: new Date().getMonth() };
@@ -207,6 +208,10 @@ function dibujarCalendario() {
     primerDia.toLocaleDateString("es-ES", { month: "long", year: "numeric" })
   );
 
+  const diasEstudiados = contarDiasEstudiadosMes(mesVisible.anio, mesVisible.mes);
+  resumenMes.textContent =
+    diasEstudiados === 1 ? "1 día estudiado" : `${diasEstudiados} días estudiados`;
+
   // No se navega más allá del mes actual.
   const ahora = new Date();
   botonMesSiguiente.disabled =
@@ -251,6 +256,20 @@ function dibujarCalendario() {
 
 function capitalizar(texto) {
   return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
+
+// Días distintos con sesión en el mes dado (varias sesiones un mismo día = 1).
+// Compara solo texto "AAAA-MM-DD": sin new Date, sin riesgo de UTC.
+// Las fechas futuras no cuentan (regla de AGENTS.md).
+function contarDiasEstudiadosMes(anio, mes) {
+  const claveMes = `${anio}-${String(mes + 1).padStart(2, "0")}`;
+  const hoyISO = obtenerHoyISO();
+  const diasUnicos = new Set(sesiones.map((s) => s.fecha));
+  let cuenta = 0;
+  for (const fecha of diasUnicos) {
+    if (fecha.startsWith(claveMes) && fecha <= hoyISO) cuenta += 1;
+  }
+  return cuenta;
 }
 
 // ---- Dibujo ----
