@@ -163,8 +163,76 @@ input {
 
 .texto-vacio { color: var(--texto-suave); text-align: center; }
 
+/* ---- Calendario ---- */
+.zona-calendario { margin-top: 1.2rem; }
+
+.cabecera-calendario {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.9rem;
+}
+.cabecera-calendario h2 { margin: 0; flex: 1; text-align: center; }
+
+.boton-mes {
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid var(--borde);
+  background: var(--tarjeta);
+  border-radius: 8px;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--texto);
+  cursor: pointer;
+}
+.boton-mes:hover:not(:disabled) { background: var(--fondo); }
+.boton-mes:disabled { opacity: 0.35; cursor: default; }
+
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4rem;
+}
+.dia-semana {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--texto-suave);
+}
+.dia {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+}
+.dia-vacio { border: 0; }
+.dia-con-sesion {
+  background: linear-gradient(135deg, #ffedd5, #fed7aa);
+  border-color: var(--fuego);
+  font-weight: 700;
+}
+.dia-hoy { box-shadow: inset 0 0 0 2px var(--primario); }
+.dia-futuro { opacity: 0.4; }
+.numero-dia { font-size: 0.9rem; }
+.marca-fuego { font-size: 0.95rem; line-height: 1; }
+.leyenda {
+  margin: 0.9rem 0 0;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
 .pie { text-align: center; color: var(--texto-suave); font-size: 0.9rem; padding: 1.5rem; }
 
 @media (max-width: 860px) {
   .rejilla { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .dia { border-radius: 8px; }
+  .numero-dia, .marca-fuego { font-size: 0.8rem; }
 }

@@ -17,6 +17,13 @@ const totalHoras = document.getElementById("total-horas");
 const totalDias = document.getElementById("total-dias");
 const minutosSemana = document.getElementById("minutos-semana");
 const botonBorrarTodo = document.getElementById("boton-borrar-todo");
+const tituloMes = document.getElementById("titulo-mes");
+const calendario = document.getElementById("calendario");
+const botonMesAnterior = document.getElementById("mes-anterior");
+const botonMesSiguiente = document.getElementById("mes-siguiente");
+
+// Mes que muestra el calendario: siempre arranca en el mes actual.
+let mesVisible = { anio: new Date().getFullYear(), mes: new Date().getMonth() };
 
 // Deja la fecha de hoy como valor inicial
 campoFecha.value = obtenerHoyISO();
@@ -73,6 +80,10 @@ botonBorrarTodo.addEventListener("click", () => {
   guardarSesiones();
   dibujarTodo();
 });
+
+// Navegación de meses del calendario
+botonMesAnterior.addEventListener("click", () => cambiarMes(-1));
+botonMesSiguiente.addEventListener("click", () => cambiarMes(1));
 
 // ---- Almacenamiento ----
 function cargarSesiones() {
@@ -172,6 +183,76 @@ function formatearMinutos(minutos) {
   return resto === 0 ? `${horas} h` : `${horas} h ${resto} min`;
 }
 
+// ---- Calendario ----
+function cambiarMes(delta) {
+  let mes = mesVisible.mes + delta;
+  let anio = mesVisible.anio;
+  if (mes < 0) { mes = 11; anio -= 1; }
+  if (mes > 11) { mes = 0; anio += 1; }
+  mesVisible = { anio, mes };
+  dibujarCalendario();
+}
+
+// Rejilla del mes visible (lunes primero). Marca 🔥 y fondo naranja en cada
+// día con al menos una sesión; nunca marca fechas futuras (regla de AGENTS.md).
+function dibujarCalendario() {
+  const hoyISO = obtenerHoyISO();
+  const diasConSesion = new Set(sesiones.map((s) => s.fecha));
+
+  const primerDia = new Date(mesVisible.anio, mesVisible.mes, 1);
+  const diasDelMes = new Date(mesVisible.anio, mesVisible.mes + 1, 0).getDate();
+  const huecoInicial = (primerDia.getDay() + 6) % 7; // lunes = 0
+
+  tituloMes.textContent = capitalizar(
+    primerDia.toLocaleDateString("es-ES", { month: "long", year: "numeric" })
+  );
+
+  // No se navega más allá del mes actual.
+  const ahora = new Date();
+  botonMesSiguiente.disabled =
+    mesVisible.anio === ahora.getFullYear() && mesVisible.mes === ahora.getMonth();
+
+  // Borra solo las celdas; conserva la cabecera de días de la semana.
+  calendario.querySelectorAll(".dia").forEach((celda) => celda.remove());
+
+  for (let i = 0; i < huecoInicial; i++) {
+    const hueco = document.createElement("span");
+    hueco.className = "dia dia-vacio";
+    calendario.append(hueco);
+  }
+
+  for (let dia = 1; dia <= diasDelMes; dia++) {
+    const fechaISO = formatearISO(new Date(mesVisible.anio, mesVisible.mes, dia));
+    const esFutura = fechaISO > hoyISO;
+    const tieneSesion = diasConSesion.has(fechaISO) && !esFutura;
+
+    const celda = document.createElement("span");
+    celda.className = "dia";
+    if (tieneSesion) celda.classList.add("dia-con-sesion");
+    if (fechaISO === hoyISO) celda.classList.add("dia-hoy");
+    if (esFutura) celda.classList.add("dia-futuro");
+
+    const numero = document.createElement("span");
+    numero.className = "numero-dia";
+    numero.textContent = dia;
+    celda.append(numero);
+
+    if (tieneSesion) {
+      const fuego = document.createElement("span");
+      fuego.className = "marca-fuego";
+      fuego.textContent = "🔥";
+      fuego.setAttribute("aria-hidden", "true");
+      celda.append(fuego);
+    }
+
+    calendario.append(celda);
+  }
+}
+
+function capitalizar(texto) {
+  return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
+
 // ---- Dibujo ----
 function dibujarTodo() {
   const diasUnicos = obtenerDiasUnicos();
@@ -190,6 +271,7 @@ function dibujarTodo() {
   minutosSemana.textContent = formatearMinutos(calcularMinutosSemana());
 
   dibujarLista();
+  dibujarCalendario();
 }
 
 function dibujarLista() {
