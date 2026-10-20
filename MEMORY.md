@@ -10,13 +10,14 @@
 - Rediseño visual (2026-10-18, skill `frontend-design`): identidad "tinta y brasa" — banda de tinta con número de racha gigante serif y resplandor de brasa, tarjetas con filete sin sombra, lista en filas con filete, foco visible y `prefers-reduced-motion`.
 - Skill `local-dates` versionada en `.agents/skills/` (ruta de compatibilidad que leen OpenCode y Cursor; viaja con el repo).
 - Verificación con MCP chrome-devtools (AGENTS.md): Chrome for Testing v155 en `~/.cache/puppeteer`, config con `--executablePath`; enlace temporal `/Applications/Google Chrome.app` (se puede borrar con `rm -R` tras reiniciar OpenCode, ya no hace falta).
+- `docs/constitution.md` creado (2026-10-20, aprobado por el usuario): 6 principios innegociables (stack de 3 archivos, spec↔code, lógica/interfaz, tests sin dependencias, datos del usuario, español y fechas locales). AGENTS.md lo enlaza en "Límites" y su sección "Datos" quedó corregida a la clave/formato reales.
 - Pendiente: contraste de `.dia-futuro` en el calendario (Lighthouse: 2,13:1 con opacidad .35; objetivo 4,5:1).
 - Archivos: `index.html`, `styles.css`, `app.js`. Sin build, funciona con doble clic.
 
 ## Decisiones
 - Mejor racha recalculada desde los datos (no guardada): baja si se borran sesiones. Motivo: sin migración y compatible con `file://`.
 - Minutos de la semana: cálculo al vuelo (no se guarda), semana ISO lunes–domingo en local, excluye fechas futuras, formato `X h Y min` (<1 h solo min). Minutos derivados de `horas` al mostrar; datos sin migrar.
-- Mantenido formato actual `{fecha, tema, horas}` y clave `diarioEstudioSesiones` para no perder datos. `AGENTS.md` describe otro formato (`diario-estudio-sesiones`, `{date, topic, minutes}`): pendiente reconciliar.
+- Mantenido formato actual `{fecha, tema, horas}` y clave `diarioEstudioSesiones` para no perder datos. `AGENTS.md` quedó reconciliado con el código (2026-10-20); la constitución documenta el formato real.
 - Fechas solo en local: `parsearFechaLocal()` con `new Date(año, mes-1, día)`. `creadaEn` ahora es `Date.now()` (antes `toISOString()`).
 - Mejor racha ignora fechas futuras y cuenta días duplicados como uno.
 - Calendario: marca cualquier día con ≥1 sesión (no solo rachas consecutivas), excluye futuras, solo lectura, navegación limitada al mes actual y mes visible no se persiste (al recargar vuelve al mes actual).

@@ -14,7 +14,7 @@ Web estática para registrar sesiones de estudio y motivarse viendo la racha de 
 - Diseño limpio y responsive; cualquier pantalla nueva debe verse bien en el móvil.
 
 ## Datos
-- localStorage, clave `diario-estudio-sesiones`: array de `{ date: "AAAA-MM-DD", topic, minutes }`.
+- localStorage, clave `diarioEstudioSesiones`: array de `{ id, tema, horas, fecha: "AAAA-MM-DD", creadaEn }`.
 - Si cambias la forma de los datos, mantén compatibilidad con lo ya guardado o el usuario perderá sus sesiones.
 
 ## Fechas y racha (fácil equivocarse)
@@ -35,10 +35,11 @@ Web estática para registrar sesiones de estudio y motivarse viendo la racha de 
 - No guardes nunca datos sensibles (claves, tokens, datos personales).
 
 ## Límites
+- Cumple `docs/constitution.md`: sus 6 principios son innegociables.
 - ✅ Siempre: respetar las reglas de fechas y racha, mantener los textos en español.
 - ⚠️ Pregunta antes: crear archivos nuevos, cambiar el formato de los datos guardados.
 - 🚫 Nunca: añadir dependencias, frameworks o un paso de build.
 
 ## Verificación
 - - No hay tests automatico. despues de cada cambio, verifica que el MCP de chrome Devtools: abre index `index.html`, prueba la funcionalidad, revisa la consola y comprueba la vista movil.
-- Para empezar de cero: DevTools -> Application -> Local Storage -> borrar la clave `diario-estudio-sesiones`.
+- Para empezar de cero: DevTools -> Application -> Local Storage -> borrar la clave `diarioEstudioSesiones`.
