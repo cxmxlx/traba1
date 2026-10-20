@@ -41,5 +41,5 @@ Web estática para registrar sesiones de estudio y motivarse viendo la racha de 
 - 🚫 Nunca: añadir dependencias, frameworks o un paso de build.
 
 ## Verificación
-- - No hay tests automatico. despues de cada cambio, verifica que el MCP de chrome Devtools: abre index `index.html`, prueba la funcionalidad, revisa la consola y comprueba la vista movil.
+- No hay tests automáticos. Después de cada cambio, verifica con el MCP de Chrome DevTools: abre `index.html`, prueba la funcionalidad, revisa la consola y comprueba la vista móvil.
 - Para empezar de cero: DevTools -> Application -> Local Storage -> borrar la clave `diarioEstudioSesiones`.
