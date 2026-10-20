@@ -9,6 +9,8 @@
 - Contador de días estudiados del mes visible: `#resumen-mes` bajo el título del calendario, se actualiza al navegar meses.
 - Rediseño visual (2026-10-18, skill `frontend-design`): identidad "tinta y brasa" — banda de tinta con número de racha gigante serif y resplandor de brasa, tarjetas con filete sin sombra, lista en filas con filete, foco visible y `prefers-reduced-motion`.
 - Skill `local-dates` versionada en `.agents/skills/` (ruta de compatibilidad que leen OpenCode y Cursor; viaja con el repo).
+- Verificación con MCP chrome-devtools (AGENTS.md): Chrome for Testing v155 en `~/.cache/puppeteer`, config con `--executablePath`; enlace temporal `/Applications/Google Chrome.app` (se puede borrar con `rm -R` tras reiniciar OpenCode, ya no hace falta).
+- Pendiente: contraste de `.dia-futuro` en el calendario (Lighthouse: 2,13:1 con opacidad .35; objetivo 4,5:1).
 - Archivos: `index.html`, `styles.css`, `app.js`. Sin build, funciona con doble clic.
 
 ## Decisiones
