@@ -42,5 +42,5 @@ Web estática para registrar sesiones de estudio y motivarse viendo la racha de 
 
 ## Verificación
 - No hay tests automáticos. Después de cada cambio, verifica con el MCP de Chrome DevTools: abre `index.html`, prueba la funcionalidad, revisa la consola y comprueba la vista móvil.
-- Los cálculos puros de `logica.js` se prueban sin instalar nada con `node --test tests/`.
+- Los cálculos puros de `logica.js` se prueban sin instalar nada con `node --test tests/mapa.test.js`.
 - Para empezar de cero: DevTools -> Application -> Local Storage -> borrar la clave `diarioEstudioSesiones`.

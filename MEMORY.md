@@ -11,7 +11,9 @@
 - Skill `local-dates` versionada en `.agents/skills/` (ruta de compatibilidad que leen OpenCode y Cursor; viaja con el repo).
 - Verificación con MCP chrome-devtools (AGENTS.md): Chrome for Testing v155 en `~/.cache/puppeteer`, config con `--executablePath`; enlace temporal `/Applications/Google Chrome.app` (se puede borrar con `rm -R` tras reiniciar OpenCode, ya no hace falta).
 - `docs/constitution.md` creado (2026-10-20, aprobado por el usuario): 6 principios innegociables (stack de 3 archivos, spec↔code, lógica/interfaz, tests sin dependencias, datos del usuario, español y fechas locales). AGENTS.md lo enlaza en "Límites" y su sección "Datos" quedó corregida a la clave/formato reales.
-- Pendiente: contraste de `.dia-futuro` en el calendario (Lighthouse: 2,13:1 con opacidad .35; objetivo 4,5:1).
+- `logica.js` creado (2026-10-20): cálculos puros del mapa de calor con "hoy" como parámetro, sin tocar el DOM ni el almacenamiento. Se carga en `index.html` antes de `app.js` y exporta `window.logicaMapa` / `module.exports`. El mapa visible en la interfaz aún NO está pintado.
+- `tests/mapa.test.js` creado (2026-10-20): 29 pruebas con `node --test` (sin dependencias) sobre los cálculos del mapa. Cada prueba declara en su nombre el RF o CL que cubre.
+- Pendiente: contraste de `.dia-futuro` en el calendario (Lighthouse: 2,13:1 con opacidad .35; objetivo 4,5:1). RNF-2 de la spec exige 4,5:1 al mapa, así que conviene arreglarlo antes de pintarlo.
 - Archivos: `index.html`, `styles.css`, `app.js`. Sin build, funciona con doble clic.
 
 ## Decisiones
