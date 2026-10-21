@@ -4,7 +4,7 @@ Web estática para registrar sesiones de estudio y motivarse viendo la racha de 
 
 ## Stack y estructura
 - HTML, CSS y JavaScript puros: sin frameworks, librerías, npm, bundler ni build.
-- `index.html` (estructura), `styles.css` (estilos), `app.js` (lógica y datos).
+- `index.html` (estructura), `styles.css` (estilos), `app.js` (datos y pintado), `logica.js` (cálculos puros).
 - Repositorio git en rama `main`: commits breves en español.
 - Debe funcionar abriendo `index.html` con doble clic (`file://`): nada de módulos ES (`type="module"`), `fetch` a archivos locales ni nada que requiera servidor.
 
@@ -42,4 +42,5 @@ Web estática para registrar sesiones de estudio y motivarse viendo la racha de 
 
 ## Verificación
 - No hay tests automáticos. Después de cada cambio, verifica con el MCP de Chrome DevTools: abre `index.html`, prueba la funcionalidad, revisa la consola y comprueba la vista móvil.
+- Los cálculos puros de `logica.js` se prueban sin instalar nada con `node --test tests/`.
 - Para empezar de cero: DevTools -> Application -> Local Storage -> borrar la clave `diarioEstudioSesiones`.
